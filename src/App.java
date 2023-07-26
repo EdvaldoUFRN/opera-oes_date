@@ -1,8 +1,10 @@
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -46,5 +48,22 @@ public class App {
         LocalDate nextWeekLocalDate = d04.plusDays(7);
         System.out.println("pastWeekLocalDate = " + pastWeekLocalDate);
         System.out.println("nextWeekLocalDate = " + nextWeekLocalDate);
+        //tem como fazer o mesmo com LocalDateTime e Instant
+        Instant pastWeekInstant = d06.minus(7, ChronoUnit.DAYS);
+        Instant nextWeekInstant = d06.plus(7, ChronoUnit.DAYS);
+        System.out.println("pastWeekLocalDate = " + pastWeekInstant);
+        System.out.println("nextWeekLocalDate = " + nextWeekInstant);
+
+        //Duração entre duas datas horas
+        Duration t1 = Duration.between(pastWeekInstant, nextWeekInstant);
+        System.out.println("t1 dias = " + t1.toDays()); 
+        //O LocalDate apenas, não dá para usar, pois ele não tem os segundos, então eu teria que convertê-lo 
+        //para LocalDateTime
+        //Para converter tem que fazer o seguinte
+        //colocar no Duration.between(pastWeekInstant.atTime(0,0), nextWeekInstant.atTime(0,0));
+        //atTime é como se fosse no "tempo"
+        //ou colocar apenas .atStartOfDay() que já é isso automaticamente
+        //se colocar a data menor menos a maior, vai dar um valor negativo
+        
     }
 }
