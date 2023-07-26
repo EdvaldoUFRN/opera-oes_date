@@ -1,3 +1,5 @@
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -5,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -64,6 +67,10 @@ public class App {
         //atTime é como se fosse no "tempo"
         //ou colocar apenas .atStartOfDay() que já é isso automaticamente
         //se colocar a data menor menos a maior, vai dar um valor negativo
-        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Scanner sc = new Scanner(System.in);
+        Date contractDate = sdf.parse(sc.next());
+        System.out.println(contractDate);
+        sc.close();
     }
 }
